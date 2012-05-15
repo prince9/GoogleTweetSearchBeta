@@ -107,7 +107,7 @@
                                //検索結果(ヒット数)をラベルに表示
                                hitcount.text = str2;
                                //検索結果(ヒット数)を数値に変換する
-                               int hit = [str2 integerValue];
+                               hit = [str2 integerValue];
                                NSLog(@"%d",hit);
                                
    }]; 
