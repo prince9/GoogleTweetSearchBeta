@@ -228,6 +228,7 @@ alpFOTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@s
     
 }
 
+//フェードイン
 - (void)loadTimelineViewFadeIn {
 //フェードイン準備
     CATransition *transition2;
