@@ -57,7 +57,7 @@
     [self loadTimeline];
     
     //タイマー設定。3秒ごとに- (void)loadTimelineView の内容を繰り返す
-   myTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(loadTimelineView) userInfo:nil repeats:YES];
+   myTimer = [NSTimer scheduledTimerWithTimeInterval:8.0 target:self selector:@selector(loadTimelineView) userInfo:nil repeats:YES];
 
    
 }
@@ -169,6 +169,15 @@
 //3秒ごとにつぶやきを表示(以下の{}内の動作を3秒ごとに繰り返す)
 -(void)loadTimelineView {
     twindex = twindex + 1;
+    
+    //13件表示したら最初から繰り返して表示(ここでAPIにアクセスしてもいいんですが、負荷を考慮して)
+    //もしヒット数と要素数が同じになったら最初から繰り返して表示する(ヒット数が少ないキーワードを考慮)
+   if (twindex == 13) {
+       
+        twindex = 1;
+    } else if (twindex == hit) {
+        twindex = 1;
+    }
     
     //配列userNameArray(ユーザ名)のtwindex番目(3秒ごとに増えていく。最初は1で次は2)の要素を取り出す
     NSString *twAstr = [userNameArray objectAtIndex:twindex];
