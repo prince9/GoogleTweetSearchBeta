@@ -59,6 +59,13 @@
     //タイマー設定。3秒ごとに- (void)loadTimelineView の内容を繰り返す
    myTimer = [NSTimer scheduledTimerWithTimeInterval:8.0 target:self selector:@selector(loadTimelineView) userInfo:nil repeats:YES];
 
+/*
+//フェードアウトのタイマー設定
+alpFOTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(loadTimelineViewFadeOut) userInfo:nil repeats:YES];
+    //フェードインのタイマー設定
+    alpFITimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(loadTimelineViewFadeIn) userInfo:nil repeats:YES];
+
+*/
    
 }
 
@@ -195,6 +202,53 @@
     tweetText.text = twTstr;
     
 }
+
+/*
+//フェードアウト
+- (void)loadTimelineViewFadeOut {
+    //フェードアウト開始まで2秒待つ
+    [NSThread sleepForTimeInterval:2];
+    //フェードアウト準備
+    CATransition *transition;
+    transition = [CATransition animation];
+    
+    //フェードアウトを2秒かけて実行
+    [transition setDuration:2];
+    //フェードイン/アウト設定
+    [transition setType:kCATransitionFade];
+   //フェードアウトの場合はYES、フェードインの場合はNOに
+    [tweetText setHidden:YES];
+    [twAccount  setHidden:YES];
+    [tweetIconImg  setHidden:YES];
+    //フェードアウト実行
+    [[tweetText layer] addAnimation:transition forKey:@"transitionAnimation"];
+    [[twAccount layer] addAnimation:transition forKey:@"transitionAnimation"];
+    [[tweetIconImg layer] addAnimation:transition forKey:@"transitionAnimation"];
+
+    
+}
+
+- (void)loadTimelineViewFadeIn {
+//フェードイン準備
+    CATransition *transition2;
+    transition2 = [CATransition animation];
+    //フェードイントを2秒かけて実行
+    [transition2 setDuration:2];
+    //フェードイン/アウト設定
+    [transition2 setType:kCATransitionFade];
+    //フェードアウトの場合はYES、フェードインの場合はNOに
+    [tweetText setHidden:NO];
+    [twAccount setHidden:NO];
+    [tweetIconImg setHidden:NO];
+    
+    //フェードイン実行
+    [[tweetText layer] addAnimation:transition2 forKey:@"transitionAnimation"];
+    [[twAccount layer] addAnimation:transition2 forKey:@"transitionAnimation"];
+    [[tweetIconImg layer] addAnimation:transition2 forKey:@"transitionAnimation"];
+}
+
+*/
+
 
 - (void)viewDidUnload
 {
