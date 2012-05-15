@@ -27,6 +27,12 @@
     //タイマー。3秒ごとにつぶやきを表示させるため
     NSTimer *myTimer;
     
+    /*
+    フェードインアウト用のタイマー
+      NSTimer *alpFITimer;
+    NSTimer *alpFOTimer;
+    */
+    
     //ユーザ名・テキスト・アイコンの配列を取り出すための数
     int twindex;
     
