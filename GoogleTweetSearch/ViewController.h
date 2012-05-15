@@ -73,5 +73,9 @@
 //Twitterのタイムラインを表示
 -(void)loadTimelineView;
 
+//フェードアウト
+- (void)loadTimelineViewFadeOut;
+//フェードイン
+- (void)loadTimelineViewFadeIn;
 
 @end
