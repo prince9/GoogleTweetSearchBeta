@@ -133,7 +133,7 @@ alpFOTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@s
             if (account != nil) {
                 
              //TwitterのSearchAPIを使用する
-                NSString *twurlString = [NSString stringWithFormat:@"http://search.twitter.com/search.json?q=%@",encodStr];
+                NSString *twurlString = [NSString stringWithFormat:@"http://search.twitter.com/search.json?q=%@rpp=50",encodStr];
                 
                 //URLWithStringでNSURLのインスタンスを生成
                 NSURL *twurl = [NSURL URLWithString:twurlString];
@@ -177,9 +177,9 @@ alpFOTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@s
 -(void)loadTimelineView {
     twindex = twindex + 1;
     
-    //13件表示したら最初から繰り返して表示(ここでAPIにアクセスしてもいいんですが、負荷を考慮して)
+    //50件表示したら最初から繰り返して表示(ここでAPIにアクセスしてもいいんですが、負荷を考慮して)
     //もしヒット数と要素数が同じになったら最初から繰り返して表示する(ヒット数が少ないキーワードを考慮)
-   if (twindex == 13) {
+   if (twindex == 50) {
        
         twindex = 1;
     } else if (twindex == hit) {
